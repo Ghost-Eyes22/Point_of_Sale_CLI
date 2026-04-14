@@ -5,3 +5,4 @@
 from module import PointOfSale
 app = PointOfSale()
 app.start()
+
