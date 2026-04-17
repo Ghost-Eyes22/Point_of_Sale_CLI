@@ -9,13 +9,23 @@ class PointOfSale:
   def __init__(self):
     self.checkout_total = 0 # This is an example varialbe, remove it or change it as you please.
     print("\nInitializing POS system...")
-  def cart(self):
-    print("These Are The Items In Your Cart")
+    self.cart = []
+    self.prices = []
 
+
+  def cart(self):
+    if len(self.cart) == 0:
+      print("Your cart is empty)")
+      return
+    for i in range(0,len(self.cart)):
+      print(self.cart[i], ": $", self.prices[i])
+    
   def add(self):
-    item = input("What would you like to add?")
-    self.cart_item.append(item)
-    print("Added", item, "to the cart")
+    product = input("What item would you like to add?")
+    self.cart.append(product)
+    price = float(input("how much does this item cost"))
+    print(product, price)
+    return
 
   def checkout():
      print("1.Yes")
@@ -34,27 +44,25 @@ class PointOfSale:
   def start(self): # This is the function that should be used to start the application.
     print("Please select what you would like to do.")
     print("1.Show Cart")
-    print("2.clear cart")
-    print("3.add to cart")
-    print("4.checkout")
-    print("5.Exit App")
+    print("2.add to cart")
+    print("3.checkout")
+    print("4.Exit App")
 
 
-while True:
-    choice = input("Enter Selection:")
-    if choice == "1":
+    while True:
+      choice = input("Enter Selection:")
+
+      if choice == "1":
         self.cart()
 
-    if choice == "2":
-      while self.cart:
-          item = self.cart.pop()
-          print("Your list of items:", item)
+      if choice == "2":
+        self.get_user_items()
+        print("Your list of items:")
 
-    if choice == "3":
-      while self.cart:
-          item = self.cart.append()
-          print("Your list of items :", item)
-    
-    if choice == "4":
-       self.cart()
+      if choice == "3":
+        self.cart()
+        print("Caculating all of your items")
+        print("Your list of items :", self.cart())
       
+      if choice == "4":
+        break        
